@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تولد عشق من ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ font-family:Tahoma,Arial,sans-serif;
+ background:linear-gradient(145deg,#fff0f5,#f9d7e4,#fceee7);
+ color:#632d43;text-align:center;
+ display:flex;justify-content:center;align-items:center;
+ padding:20px;overflow-x:hidden
+}
+.card{
+ width:100%;max-width:440px;background:#ffffffdc;
+ border:1px solid #fff;border-radius:25px;
+ padding:28px 20px;box-shadow:0 12px 40px #a94c6b25;
+ position:relative;z-index:1
+}
+h1{color:#c34470;font-size:25px}
+p{line-height:2}
+input{
+ width:100%;padding:13px;margin:8px 0;
+ border:1px solid #e5a9bd;border-radius:12px;
+ font-size:16px;text-align:center;background:#fffafa
+}
+button{
+ border:0;border-radius:25px;padding:13px 22px;
+ margin:8px;background:#c34470;color:white;
+ font-size:15px;cursor:pointer
+}
+button:active{transform:scale(.97)}
+.hidden{display:none}
+.heart{position:fixed;bottom:-30px;animation:up 7s linear infinite;opacity:.65;z-index:0}
+@keyframes up{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+.small{font-size:13px;color:#956276}
+</style>
+</head>
+<body>
+<div class="card">
+ <section id="s1">
+  <div style="font-size:48px">💌</div>
+  <h1>یه سورپرایز کوچولو برات دارم</h1>
+  <p>برای کسی که امروز روز خاص اونه... ❤️</p>
+  <button onclick="go(2)">بزن بریم ✨</button>
+ </section>
+
+ <section id="s2" class="hidden">
+  <div style="font-size:42px">🎂</div>
+  <h1>اول یه سؤال کوچولو!</h1>
+  <p>تولد فرزاد چه تاریخیه؟ ❤️</p>
+  <input id="q1" placeholder="مثلاً ۱۳۷۸/۰۳/۰۴">
+  <button onclick="checkDate('q1','1378/03/04',3)">ادامه 💗</button>
+  <p id="e1" class="small"></p>
+ </section>
+
+ <section id="s3" class="hidden">
+  <div style="font-size:42px">💍</div>
+  <h1>یه تاریخ مهم دیگه...</h1>
+  <p>تاریخ عقد ما چی بود؟ 💕</p>
+  <input id="q2" placeholder="سال/ماه/روز">
+  <button onclick="checkDate('q2','1402/07/18',4)">جواب من ✨</button>
+  <p id="e2" class="small"></p>
+ </section>
+
+ <section id="s4" class="hidden">
+  <div style="font-size:42px">🌷</div>
+  <h1>حالا نوبت خودته!</h1>
+  <p>تولد خودت چه تاریخیه؟ 🎂</p>
+  <input id="q3" placeholder="سال/ماه/روز">
+  <button onclick="checkDate('q3','1385/08/29',5)">بریم سورپرایز؟ 🎁</button>
+  <p id="e3" class="small"></p>
+ </section>
+
+ <section id="s5" class="hidden">
+  <div style="font-size:48px">🎁💗🎂</div>
+  <h1>تولدت مبارک عشقم ❤️</h1>
+  <p>
+   قشنگ‌ترین لحظه‌ها وقتی قشنگ‌ترن که با هم تجربه‌شون کنیم؛
+   به امید کلی خاطره‌ی خوب، خنده‌های از ته دل و روزهایی که کنار هم می‌سازیم.
+   ❤️♾️
+  </p>
+  <p style="font-size:18px;color:#bd3f6b">
+   با عشق، از طرف عشقت،<br><b>فرزاد ❤️</b>
+  </p>
+  <div style="font-size:35px">🌹💗🌹</div>
+ </section>
+</div>
+<script>
+function go(n){
+ document.querySelectorAll('.card section').forEach(s=>s.classList.add('hidden'));
+ document.getElementById('s'+n).classList.remove('hidden');
+}
+function norm(v){
+ return v.trim().replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+ .replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d))
+ .replace(/[\s.-]/g,'/');
+}
+function checkDate(id,answer,next){
+ const input=document.getElementById(id);
+ const error=document.getElementById('e'+id.slice(1));
+ if(norm(input.value)===answer){
+  go(next);
+ }else{
+  error.textContent='یه بار دیگه فکر کن عشقم 😊❤️';
+ }
+}
+for(let i=0;i<18;i++){
+ const h=document.createElement('div');
+ h.className='heart';h.textContent=['❤️','💕','💗','✨'][i%4];
+ h.style.left=(i*17%100)+'%';
+ h.style.animationDelay=(i%7)+'s';
+ h.style.fontSize=(15+i%18)+'px';
+ document.body.appendChild(h);
+}
+</script>
+</body>
+    </html>
+    
